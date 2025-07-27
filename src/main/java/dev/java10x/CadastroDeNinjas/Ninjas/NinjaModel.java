@@ -17,11 +17,16 @@ public class NinjaModel {
 
     @Id // Se relaciona com o atributo abaixo mais proximo
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Usado o @ID para gerar na estrategia identity
+    @Column(name = "ID")
     private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "age")
     private Integer age;
 
-    @Column(unique = true) // Garante endereço unico dentro dessa coluna
+    @Column(unique = true, name = "email") // Garante endereço unico dentro dessa coluna
     private String email;
 
     //   @ManyToOne garante que um ninja poderá ter uma missão

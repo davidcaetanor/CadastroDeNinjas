@@ -16,9 +16,13 @@ import java.util.List;
 public class MissoesModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long id;
 
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "dificult")
     private String dificult;
 
     //   Garante que uma missao poderá ter varios ninja
