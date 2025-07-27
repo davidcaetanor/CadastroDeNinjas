@@ -16,10 +16,12 @@ import lombok.*;
 public class NinjaModel {
 
     @Id // Se relaciona com o atributo abaixo mais proximo
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Usado juntamente com o @ID para gerar na estrategia identity
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Usado o @ID para gerar na estrategia identity
     private Long id;
     private String name;
     private Integer age;
+
+    @Column(unique = true) // Garante endereço unico dentro dessa coluna
     private String email;
 
     //   @ManyToOne garante que um ninja poderá ter uma missão
