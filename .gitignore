@@ -36,3 +36,5 @@ buildNumber.properties
 .DS_Store
 Thumbs.db
 HELP.md
+data/
+.env
