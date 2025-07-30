@@ -2,10 +2,18 @@ package dev.java10x.CadastroDeNinjas.Ninjas;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController // Informando que é uma aplication Controller
 @RequestMapping("ninja") // Organizar as rotas
 
 public class NinjaController {
+
+    private NinjaService ninjaService;
+
+    public NinjaController(NinjaService ninjaService) {
+        this.ninjaService = ninjaService;
+    }
 
     // Aba para criar o ninja
     @PostMapping("/add")
@@ -15,8 +23,8 @@ public class NinjaController {
 
     // Exibindo todos os ninjas
     @GetMapping("/viewall")
-    public String allNinjas(){
-        return "Mostrando todos os ninjas";
+    public List<NinjaModel> allNinjas(){
+        return ninjaService.allNinjas();
     }
 
     // exibindo ninjas por ID
