@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController // Informando que é uma aplication Controller
-@RequestMapping("ninja") // Organizar as rotas
+@RequestMapping("ninjas") // Organizar as rotas
 
 public class NinjaController {
 
@@ -22,15 +22,15 @@ public class NinjaController {
     }
 
     // Exibindo todos os ninjas
-    @GetMapping("/viewall")
+    @GetMapping
     public List<NinjaModel> allNinjas(){
         return ninjaService.allNinjas();
     }
 
     // exibindo ninjas por ID
-    @GetMapping("/byid")
-    public String ninjasByID(){
-        return "Mostrando ninjas por ID";
+    @GetMapping("/{id}")
+    public NinjaModel ninjasByID(@PathVariable Long id){
+        return ninjaService.ninjasByID(id);
     }
 
     // Atualizando ninja ja cadastrado
