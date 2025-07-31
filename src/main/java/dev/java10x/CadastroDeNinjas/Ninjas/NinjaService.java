@@ -2,6 +2,7 @@ package dev.java10x.CadastroDeNinjas.Ninjas;
 
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,4 +28,7 @@ public class NinjaService {
         return ninjaRepository.save(ninja);
     }
 
+    public void deleteNinja(Long id){
+        ninjaRepository.deleteById(id);
+    }
 }
