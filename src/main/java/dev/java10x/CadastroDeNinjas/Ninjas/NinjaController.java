@@ -17,9 +17,9 @@ public class NinjaController {
 
     // Aba para criar o ninja
     @PostMapping("/add")
-    public String createNinja(){
-        return "Criando Ninja";
-    }
+    public NinjaModel createNinja(@RequestBody NinjaModel ninja){
+        return ninjaService.addNinja(ninja);
+    } // Usamos @Requestbody para o usuario encaminhar um json e encaminharmos para serializaçao dentro do banco de dados
 
     // Exibindo todos os ninjas
     @GetMapping
@@ -31,7 +31,7 @@ public class NinjaController {
     @GetMapping("/{id}")
     public NinjaModel ninjasByID(@PathVariable Long id){
         return ninjaService.ninjasByID(id);
-    }
+    } //Path Variable para pegar o valor inserido pelo usuario e transformar no ID de busca
 
     // Atualizando ninja ja cadastrado
     @PutMapping("/updateid")
