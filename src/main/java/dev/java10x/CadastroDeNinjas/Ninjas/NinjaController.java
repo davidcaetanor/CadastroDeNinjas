@@ -34,9 +34,9 @@ public class NinjaController {
     } //Path Variable para pegar o valor inserido pelo usuario e transformar no ID de busca
 
     // Atualizando ninja ja cadastrado
-    @PutMapping("/updateid")
-    public String ninjasUpdate(){
-        return "Atualizando o ninja";
+    @PutMapping("/update/{id}")
+    public NinjaModel ninjasUpdate(@PathVariable Long id, @RequestBody NinjaModel ninja){
+        return ninjaService.updateNinja(id,ninja);
     }
 
 //  Deletando ninja por ID

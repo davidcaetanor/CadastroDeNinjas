@@ -3,8 +3,7 @@ package dev.java10x.CadastroDeNinjas.Ninjas;
 import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.Option;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class NinjaService {
@@ -30,5 +29,13 @@ public class NinjaService {
 
     public void deleteNinja(Long id){
         ninjaRepository.deleteById(id);
+    }
+
+    public NinjaModel updateNinja(Long id, NinjaModel ninja){
+        if (ninjaRepository.existsById(id)){
+            ninja.setId(id);
+            return ninjaRepository.save(ninja);
+        }
+        return null;
     }
 }
