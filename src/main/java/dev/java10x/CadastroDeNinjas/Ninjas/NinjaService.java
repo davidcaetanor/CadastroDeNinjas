@@ -1,16 +1,16 @@
 package dev.java10x.CadastroDeNinjas.Ninjas;
-
 import org.springframework.stereotype.Service;
-
 import java.util.*;
 
 @Service
 public class NinjaService {
 
     private NinjaRepository ninjaRepository;
+    private NinjaMapper ninjaMapper;
 
-    public NinjaService(NinjaRepository ninjaRepository) {
+    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
     }
 
     public List<NinjaModel> allNinjas(){
@@ -22,8 +22,11 @@ public class NinjaService {
         return optionalNinja.orElse(null);
     }
 
-    public NinjaModel addNinja(NinjaModel ninja) {
-        return ninjaRepository.save(ninja);
+    public NinjaDTO addNinja(NinjaDTO ninjaDTO) {
+        NinjaModel ninjaSave;
+        NinjaModel ninjaModel = ninjaMapper.map(ninjaDTO);
+        ninjaSave = ninjaRepository.save(ninjaModel);
+        return ninjaMapper.map(ninjaSave);
     }
 
     public void deleteNinja(Long id){
@@ -37,4 +40,5 @@ public class NinjaService {
         }
         return null;
     }
+
 }
