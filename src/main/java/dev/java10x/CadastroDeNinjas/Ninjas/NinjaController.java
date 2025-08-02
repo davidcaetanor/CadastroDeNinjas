@@ -17,7 +17,7 @@ public class NinjaController {
 
     // Aba para criar o ninja
     @PostMapping("/add")
-    public NinjaModel createNinja(@RequestBody NinjaModel ninja){
+    public NinjaDTO createNinja(@RequestBody NinjaDTO ninja){
         return ninjaService.addNinja(ninja);
     } // Usamos @Requestbody para o usuario encaminhar um json e encaminharmos para serializaçao dentro do banco de dados
 
