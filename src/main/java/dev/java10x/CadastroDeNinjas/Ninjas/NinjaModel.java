@@ -29,6 +29,9 @@ public class NinjaModel {
     @Column(unique = true, name = "email") // Garante endereço unico dentro dessa coluna
     private String email;
 
+    @Column(name = "rank")
+    private String rank;
+
     //   @ManyToOne garante que um ninja poderá ter uma missão
     @ManyToOne()
     @JoinColumn(name = "missoes_id") //Nova coluna para a Foreign key
